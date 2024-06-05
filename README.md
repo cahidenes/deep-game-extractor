@@ -6,7 +6,7 @@ Deep Game Extractor is a tool for collecting screenshots from any game. The capt
 ## Installation
 To install the required packages, run the following command:
 ```bash
-pip install -r requirements.txt
+pip install pygame pillow pynput pydub
 ```
 
 ## Usage

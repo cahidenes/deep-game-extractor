@@ -3,8 +3,12 @@ from pynput import keyboard, mouse
 from pynput.keyboard import Key
 import time
 import config
-from pydub import AudioSegment
-from pydub.playback import play
+
+try:
+    from pydub import AudioSegment
+    from pydub.playback import play
+except:
+    pass
 
 _record_string = ''
 _record_move = False
@@ -24,9 +28,12 @@ key_names = ['alt', 'alt_l', 'alt_r', 'alt_gr', 'backspace', 'caps_lock', 'cmd',
              'media_previous', 'media_next', 'insert', 'menu', 'num_lock', 'pause', 'print_screen', 'scroll_lock',
              'left']
 _alphabet = 'abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-_end_sound = AudioSegment.from_file('assets/sounds/end.wav')
-_split_sound = AudioSegment.from_file('assets/sounds/split.wav')
-_cancel_sound = AudioSegment.from_file('assets/sounds/cancel.mp3')
+try:
+    _end_sound = AudioSegment.from_file('assets/sounds/end.wav')
+    _split_sound = AudioSegment.from_file('assets/sounds/split.wav')
+    _cancel_sound = AudioSegment.from_file('assets/sounds/cancel.mp3')
+except:
+    pass
 
 
 def get_key_name(key):
@@ -146,12 +153,18 @@ def record(include_time=True, record_move=False):
     _mouse_listener.start()
     _timer = time.perf_counter_ns() // 1000000
     while _record_string.endswith(config.end_key) is False:
-        if _record_string.endswith('p'+config.save_key):
-            play(_split_sound)
+        try:
+            if _record_string.endswith('p'+config.save_key):
+                play(_split_sound)
+        except:
+            pass
     _keyboard_listener.stop()
     _mouse_listener.stop()
 
-    play(_end_sound)
+    try:
+        play(_end_sound)
+    except:
+        pass
     print('Recording ended')
     return _record_string
 
@@ -197,7 +210,10 @@ def simulate(simulate_string, speedup=1, use_mouse=True, include_sound=True):
     while simulate_string:
         if _record_string.endswith(config.cancel_key):
             _keyboard_listener.stop()
-            play(_cancel_sound)
+            try:
+                play(_cancel_sound)
+            except:
+                pass
             return True
         t = int(simulate_string[:simulate_string.find(',')])
         simulate_string = simulate_string[simulate_string.find(',') + 1:]
@@ -205,8 +221,11 @@ def simulate(simulate_string, speedup=1, use_mouse=True, include_sound=True):
         time.sleep((t - current_time) / (1000*speedup))
         current_time = t
 
-        if simulate_string.startswith('p'+config.save_key) and include_sound:
-            play(_split_sound)
+        try:
+            if simulate_string.startswith('p'+config.save_key) and include_sound:
+                play(_split_sound)
+        except:
+            pass
 
         type = simulate_string[0]
         simulate_string = simulate_string[1:]
@@ -274,8 +293,11 @@ def simulate(simulate_string, speedup=1, use_mouse=True, include_sound=True):
 
         else:
             break
-    if include_sound:
-        play(_end_sound)
+    try:
+        if include_sound:
+            play(_end_sound)
+    except:
+        pass
     _keyboard_listener.stop()
     print('Simulation ended')
     return False
