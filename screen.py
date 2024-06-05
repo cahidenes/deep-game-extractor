@@ -347,6 +347,7 @@ class MainMenuScreen:
                     ) for x in split_recording(setting['recording'], config.save_key)])
             import os, datetime
             save_name = f'{config.config[self.configs_button.selected]["name"]}-{datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}'
+            os.mkdir('screenshots')
             os.mkdir('screenshots/' + save_name)
             sample = ImageGrab.grab()
             w, h = sample.size
@@ -492,7 +493,7 @@ class IntroScreen:
 
     def github(self):
         import webbrowser
-        webbrowser.open('www.github.com')
+        webbrowser.open('https://github.com/cahidenes/deep-game-extractor')
 
     def update(self, events):
         self.start_button.update(events)

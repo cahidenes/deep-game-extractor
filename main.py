@@ -1,6 +1,8 @@
 import pygame
 pygame.init()
 pygame.display.set_caption('Deep Game Extractor')
+icon = pygame.image.load('assets/icon.png')
+pygame.display.set_icon(icon)
 
 from screen import *
 
