@@ -19,8 +19,32 @@ _keys = [Key.alt, Key.alt_l, Key.alt_r, Key.alt_gr, Key.backspace, Key.caps_lock
          Key.ctrl, Key.ctrl_l, Key.ctrl_r, Key.delete, Key.down, Key.end, Key.enter, Key.esc, Key.f1, Key.f2, Key.f3,
          Key.f4, Key.f5, Key.f6, Key.f7, Key.f8, Key.f9, Key.f10, Key.f11, Key.f12, Key.f13, Key.f14, Key.f15, Key.f16,
          Key.page_up, Key.right, Key.shift, Key.shift_l, Key.shift_r, Key.space, Key.tab, Key.up, Key.media_play_pause,
-         Key.media_volume_mute, Key.media_volume_down, Key.media_volume_up, Key.media_previous, Key.media_next,
-         Key.insert, Key.menu, Key.num_lock, Key.pause, Key.print_screen, Key.scroll_lock, Key.left]
+         Key.media_volume_mute, Key.media_volume_down, Key.media_volume_up, Key.media_previous, Key.media_next, Key.left]
+try:
+    _keys.append(Key.insert)
+except:
+    pass
+try:
+    _keys.append(Key.menu)
+except:
+    pass
+try:
+    _keys.append(Key.num_lock)
+except:
+    pass
+try:
+    _keys.append(Key.pause)
+except:
+    pass
+try:
+    _keys.append(Key.print_screen)
+except:
+    pass
+try:
+    _keys.append(Key.scroll_lock)
+except:
+    pass
+
 key_names = ['alt', 'alt_l', 'alt_r', 'alt_gr', 'backspace', 'caps_lock', 'cmd', 'cmd_l', 'cmd_r', 'ctrl', 'ctrl_l',
              'ctrl_r', 'delete', 'down', 'end', 'enter', 'esc', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9',
              'f10', 'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'page_up', 'right', 'shift', 'shift_l', 'shift_r',
