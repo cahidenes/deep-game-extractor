@@ -26,3 +26,4 @@ python main.py
 [![Demo Video](https://img.youtube.com/vi/32k22isSmOw/0.jpg)](https://youtu.be/32k22isSmOw)
 
 ## Project Report
+[Project Report](ProjectReport.pdf)
